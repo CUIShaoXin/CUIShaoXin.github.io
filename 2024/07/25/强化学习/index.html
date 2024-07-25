@@ -20,30 +20,101 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="有志者事竟成">
-<meta property="og:type" content="website">
-<meta property="og:title" content="枫叶苑">
-<meta property="og:url" content="http://example.com/index.html">
+  <meta name="description" content="强化学习强化学习的终极目标：求解最优策略 ——第一节课（p1）1.agent​	基本上就是用于决策的模型整体 2.state​	 当前的状态, 以平面迷宫为例, 就是当前所处的格子。 ​		1. Stata space: 所有状态的集合。（ i 的范围从 1—9）  3.action​	可采取的行动, 还是以平面迷宫为例, 有上下左右移动或者原地不动5个action。 4.state transi">
+<meta property="og:type" content="article">
+<meta property="og:title" content="强化学习笔记">
+<meta property="og:url" content="http://example.com/2024/07/25/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/index.html">
 <meta property="og:site_name" content="枫叶苑">
-<meta property="og:description" content="有志者事竟成">
+<meta property="og:description" content="强化学习强化学习的终极目标：求解最优策略 ——第一节课（p1）1.agent​	基本上就是用于决策的模型整体 2.state​	 当前的状态, 以平面迷宫为例, 就是当前所处的格子。 ​		1. Stata space: 所有状态的集合。（ i 的范围从 1—9）  3.action​	可采取的行动, 还是以平面迷宫为例, 有上下左右移动或者原地不动5个action。 4.state transi">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240617145748004.png">
+<meta property="og:image" content="http://example.com/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240617153118346.png">
+<meta property="og:image" content="http://example.com/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240617154110728.png">
+<meta property="og:image" content="http://example.com/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240617154611741.png">
+<meta property="og:image" content="http://example.com/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240617202537238.png">
+<meta property="og:image" content="http://example.com/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240617202552718.png">
+<meta property="og:image" content="http://example.com/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240617203241653.png">
+<meta property="og:image" content="http://example.com/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240617203319922.png">
+<meta property="og:image" content="http://example.com/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240617211131500.png">
+<meta property="og:image" content="http://example.com/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240617211148758.png">
+<meta property="og:image" content="http://example.com/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240619153739063.png">
+<meta property="og:image" content="http://example.com/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240619162401938.png">
+<meta property="og:image" content="http://example.com/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240619162438168.png">
+<meta property="og:image" content="http://example.com/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240619162741338.png">
+<meta property="og:image" content="http://example.com/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240619162846264.png">
+<meta property="og:image" content="http://example.com/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240619163011002.png">
+<meta property="og:image" content="http://example.com/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240619163222662.png">
+<meta property="og:image" content="http://example.com/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240619163944486.png">
+<meta property="og:image" content="http://example.com/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240619164158443.png">
+<meta property="og:image" content="http://example.com/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240619170916628.png">
+<meta property="og:image" content="http://example.com/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240619191913289.png">
+<meta property="og:image" content="http://example.com/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240619191956982.png">
+<meta property="og:image" content="http://example.com/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240619193816799.png">
+<meta property="og:image" content="http://example.com/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240619195156253.png">
+<meta property="og:image" content="http://example.com/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240619195751413.png">
+<meta property="og:image" content="http://example.com/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240622202846552.png">
+<meta property="og:image" content="http://example.com/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240622203018759.png">
+<meta property="og:image" content="http://example.com/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240622203248744.png">
+<meta property="og:image" content="http://example.com/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240622203509509.png">
+<meta property="og:image" content="http://example.com/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240622204420356.png">
+<meta property="og:image" content="http://example.com/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240622211359926.png">
+<meta property="og:image" content="http://example.com/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240622214605992.png">
+<meta property="og:image" content="http://example.com/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240622214645269.png">
+<meta property="og:image" content="http://example.com/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240715104533466.png">
+<meta property="og:image" content="http://example.com/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240715105918534.png">
+<meta property="og:image" content="http://example.com/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240715110206450.png">
+<meta property="og:image" content="http://example.com/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240715110912989.png">
+<meta property="og:image" content="http://example.com/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240715111357867.png">
+<meta property="og:image" content="http://example.com/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240715155354938.png">
+<meta property="og:image" content="http://example.com/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240715155420097.png">
+<meta property="og:image" content="http://example.com/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240715170156816.png">
+<meta property="og:image" content="http://example.com/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240715161525151.png">
+<meta property="og:image" content="http://example.com/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240715161737910.png">
+<meta property="og:image" content="http://example.com/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240715170605152.png">
+<meta property="og:image" content="http://example.com/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240715171114197.png">
+<meta property="og:image" content="http://example.com/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240715171321412.png">
+<meta property="og:image" content="http://example.com/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240716160217245.png">
+<meta property="og:image" content="http://example.com/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240717095247150.png">
+<meta property="og:image" content="http://example.com/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240717095738268.png">
+<meta property="og:image" content="http://example.com/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240717150326386.png">
+<meta property="og:image" content="http://example.com/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240717150448821.png">
+<meta property="og:image" content="http://example.com/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240717150840806.png">
+<meta property="og:image" content="http://example.com/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240717153539867.png">
+<meta property="og:image" content="http://example.com/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240717203326321.png">
+<meta property="og:image" content="http://example.com/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240717204558842.png">
+<meta property="og:image" content="http://example.com/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240717204857582.png">
+<meta property="og:image" content="http://example.com/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240717205846572.png">
+<meta property="og:image" content="http://example.com/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240719104532551.png">
+<meta property="og:image" content="http://example.com/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240719104614360.png">
+<meta property="og:image" content="http://example.com/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240719105138076.png">
+<meta property="og:image" content="http://example.com/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240719105829512.png">
+<meta property="og:image" content="http://example.com/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240719153155744.png">
+<meta property="og:image" content="http://example.com/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240719154439357.png">
+<meta property="og:image" content="http://example.com/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240719160609559.png">
+<meta property="og:image" content="http://example.com/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240719161205019.png">
+<meta property="og:image" content="http://example.com/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240719162237012.png">
+<meta property="og:image" content="http://example.com/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240719162344758.png">
+<meta property="og:image" content="http://example.com/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240719162848871.png">
+<meta property="article:published_time" content="2024-07-25T03:29:33.993Z">
+<meta property="article:modified_time" content="2024-07-25T07:54:20.141Z">
 <meta property="article:author" content="ShaoXin Cui">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240617145748004.png">
 
-<link rel="canonical" href="http://example.com/">
+<link rel="canonical" href="http://example.com/2024/07/25/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : true,
-    isPost : false,
+    isHome : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>枫叶苑</title>
+  <title>强化学习笔记 | 枫叶苑</title>
   
 
 
@@ -141,9 +212,10 @@
         <div class="content-wrap">
           
 
-          <div class="content index posts-expand">
+          <div class="content post posts-expand">
             
-      
+
+    
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
@@ -159,10 +231,9 @@
       <meta itemprop="name" content="枫叶苑">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2024/07/25/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/" class="post-title-link" itemprop="url">强化学习笔记</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          强化学习笔记
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
@@ -186,7 +257,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="强化学习"><a href="#强化学习" class="headerlink" title="强化学习"></a>强化学习</h2><p><u>强化学习的终极目标：求解最优策略</u></p>
+        <h2 id="强化学习"><a href="#强化学习" class="headerlink" title="强化学习"></a>强化学习</h2><p><u>强化学习的终极目标：求解最优策略</u></p>
 <h3 id="——第一节课（p1）"><a href="#——第一节课（p1）" class="headerlink" title="——第一节课（p1）"></a>——第一节课（p1）</h3><h4 id="1-agent"><a href="#1-agent" class="headerlink" title="1.agent"></a>1.agent</h4><p>​	基本上就是用于决策的模型整体</p>
 <h4 id="2-state"><a href="#2-state" class="headerlink" title="2.state"></a><em>2</em>.state</h4><p>​	 当前的状态, 以平面迷宫为例, 就是当前所处的格子。</p>
 <p>​		<em>1.</em> Stata space: 所有状态的集合。（ i 的范围从 1—9）</p>
@@ -425,91 +496,30 @@
 <p><img src="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240719162848871.png" alt="image-20240719162848871"></p>
 <p>​						</p>
 
-      
     </div>
 
     
     
     
+
       <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/07/24/hello-world/">
+        
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="ShaoXin Cui">
-      <meta itemprop="description" content="有志者事竟成">
-    </span>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="枫叶苑">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2024/07/24/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2024-07-24 16:39:56" itemprop="dateCreated datePublished" datetime="2024-07-24T16:39:56+08:00">2024-07-24</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-      
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2024/07/24/hello-world/" rel="prev" title="Hello World">
+      <i class="fa fa-chevron-left"></i> Hello World
+    </a></div>
+      <div class="post-nav-item"></div>
     </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
       </footer>
+    
   </article>
   
   
-  
-
-
   
 
 
@@ -562,6 +572,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0"><span class="nav-number">1.</span> <span class="nav-text">强化学习</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%80%94%E2%80%94%E7%AC%AC%E4%B8%80%E8%8A%82%E8%AF%BE%EF%BC%88p1%EF%BC%89"><span class="nav-number">1.1.</span> <span class="nav-text">——第一节课（p1）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-agent"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.agent</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-state"><span class="nav-number">1.1.2.</span> <span class="nav-text">2.state</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-action"><span class="nav-number">1.1.3.</span> <span class="nav-text">3.action</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-state-transition"><span class="nav-number">1.1.4.</span> <span class="nav-text">4.state transition</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-forbidden-area"><span class="nav-number">1.1.5.</span> <span class="nav-text">5.forbidden area</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-state-transition-probability"><span class="nav-number">1.1.6.</span> <span class="nav-text">6.state transition probability</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-policy"><span class="nav-number">1.1.7.</span> <span class="nav-text">7.policy</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%80%94%E2%80%94%E7%AC%AC%E4%B8%80%E8%8A%82%E8%AF%BE%EF%BC%88p2%EF%BC%89"><span class="nav-number">1.2.</span> <span class="nav-text">——第一节课（p2）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-reward"><span class="nav-number">1.2.1.</span> <span class="nav-text">1.reward</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-trajectory"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.trajectory</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-return"><span class="nav-number">1.2.3.</span> <span class="nav-text">3.return</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-discounted-return"><span class="nav-number">1.2.4.</span> <span class="nav-text">4.discounted return</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-episode"><span class="nav-number">1.2.5.</span> <span class="nav-text">5.episode</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">1.2.6.</span> <span class="nav-text">总结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%80%94%E2%80%94%E7%AC%AC%E4%BA%8C%E8%8A%82%E8%AF%BE%EF%BC%88p1%EF%BC%89"><span class="nav-number">1.3.</span> <span class="nav-text">——第二节课（p1）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E4%B8%BE%E4%BE%8B"><span class="nav-number">1.3.1.</span> <span class="nav-text">1.举例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E5%A6%82%E4%BD%95%E8%AE%A1%E7%AE%97return"><span class="nav-number">1.3.2.</span> <span class="nav-text">2.如何计算return</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E8%B4%9D%E5%B0%94%E6%9B%BC%E5%85%AC%E5%BC%8F%E7%9A%84%E6%8E%A8%E5%AF%BC%EF%BC%88%E7%89%B9%E6%AE%8A%E6%80%A7%EF%BC%89"><span class="nav-number">1.3.3.</span> <span class="nav-text">3.贝尔曼公式的推导（特殊性）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%80%94%E2%80%94%E7%AC%AC%E4%BA%8C%E8%8A%82%E8%AF%BE%EF%BC%88p2%EF%BC%89"><span class="nav-number">1.4.</span> <span class="nav-text">——第二节课（p2）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-state-value"><span class="nav-number">1.4.1.</span> <span class="nav-text">1.state value</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E4%B8%BE%E4%BE%8B"><span class="nav-number">1.4.2.</span> <span class="nav-text">2.举例</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%80%94%E2%80%94%E7%AC%AC%E4%BA%8C%E8%8A%82%E8%AF%BE%EF%BC%88p3%EF%BC%89"><span class="nav-number">1.5.</span> <span class="nav-text">——第二节课（p3）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E8%B4%9D%E5%B0%94%E6%9B%BC%E5%85%AC%E5%BC%8F%E6%99%AE%E9%81%8D%E6%80%A7%E6%8E%A8%E5%AF%BC"><span class="nav-number">1.5.1.</span> <span class="nav-text">1.贝尔曼公式普遍性推导</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%80%94%E2%80%94%E7%AC%AC%E4%BA%8C%E8%8A%82%E8%AF%BE%EF%BC%88p4%EF%BC%89"><span class="nav-number">1.6.</span> <span class="nav-text">——第二节课（p4）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E8%B4%9D%E5%B0%94%E6%9B%BC%E7%9F%A9%E9%98%B5%E5%90%91%E9%87%8F%E5%BD%A2%E5%BC%8F%EF%BC%88matrix-vector-form%EF%BC%89%E7%9A%84%E6%8E%A8%E5%AF%BC"><span class="nav-number">1.6.1.</span> <span class="nav-text">1.贝尔曼矩阵向量形式（matrix-vector form）的推导</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%80%94%E2%80%94%E7%AC%AC%E4%BA%8C%E8%8A%82%E8%AF%BE%EF%BC%88p5%EF%BC%89"><span class="nav-number">1.7.</span> <span class="nav-text">——第二节课（p5）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-state-value%E5%92%8Caction-value%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">1.7.1.</span> <span class="nav-text">1.state value和action value的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-action-value%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="nav-number">1.7.2.</span> <span class="nav-text">2.action value的定义</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%80%94%E2%80%94%E7%AC%AC%E4%B8%89%E8%8A%82%E8%AF%BE%EF%BC%88p1%EF%BC%89"><span class="nav-number">1.8.</span> <span class="nav-text">——第三节课（p1）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E9%80%9A%E8%BF%87%E4%BE%8B%E5%AD%90%E5%BC%95%E5%87%BA%E2%80%9D%E8%B4%9D%E5%B0%94%E6%9B%BC%E6%9C%80%E4%BC%98%E5%85%AC%E5%BC%8F%E2%80%9C"><span class="nav-number">1.8.1.</span> <span class="nav-text">1.通过例子引出”贝尔曼最优公式“</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%80%94%E2%80%94%E7%AC%AC%E4%B8%89%E8%8A%82%E8%AF%BE%EF%BC%88p2%EF%BC%89"><span class="nav-number">1.9.</span> <span class="nav-text">——第三节课（p2）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E8%B4%9D%E5%B0%94%E6%9B%BC%E6%9C%80%E4%BC%98%E5%85%AC%E5%BC%8F"><span class="nav-number">1.9.1.</span> <span class="nav-text">1.贝尔曼最优公式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E5%A6%82%E4%BD%95%E6%B1%82%E8%A7%A3%E8%B4%9D%E5%B0%94%E6%9B%BC%E6%9C%80%E4%BC%98%E5%85%AC%E5%BC%8F"><span class="nav-number">1.9.2.</span> <span class="nav-text">2.如何求解贝尔曼最优公式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%80%94%E2%80%94%E7%AC%AC%E4%B8%89%E8%8A%82%E8%AF%BE%EF%BC%88p3%EF%BC%89"><span class="nav-number">1.10.</span> <span class="nav-text">——第三节课（p3）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E5%B0%86%E8%B4%9D%E5%B0%94%E6%9B%BC%E6%9C%80%E4%BC%98%E5%85%AC%E5%BC%8F%E5%86%99%E6%88%90v-f-v"><span class="nav-number">1.10.1.</span> <span class="nav-text">1.将贝尔曼最优公式写成v&#x3D;f(v)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-Contraction-mapping-theorem%EF%BC%88%E6%94%B6%E7%BC%A9%E6%98%A0%E5%B0%84%E5%AE%9A%E7%90%86%EF%BC%89"><span class="nav-number">1.10.2.</span> <span class="nav-text">2.Contraction mapping theorem（收缩映射定理）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%80%94%E2%80%94%E7%AC%AC%E4%B8%89%E8%8A%82%E8%AF%BE%EF%BC%88p4%EF%BC%89"><span class="nav-number">1.11.</span> <span class="nav-text">——第三节课（p4）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E5%BD%B1%E5%93%8D%E8%B4%9D%E5%B0%94%E6%9B%BC%E6%9C%80%E4%BC%98%E5%85%AC%E5%BC%8F%E7%9A%84%E5%BD%B1%E5%93%8D%E5%9B%A0%E7%B4%A0"><span class="nav-number">1.11.1.</span> <span class="nav-text">1.影响贝尔曼最优公式的影响因素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E9%80%9A%E8%BF%87%E4%BF%AE%E6%94%B9%E2%80%9Creward%E2%80%9D%E5%92%8C%E2%80%9C%CE%B3%E2%80%9D%E4%BC%9A%E6%94%B9%E5%8F%98%E6%9C%80%E4%BC%98%E7%AD%96%E7%95%A5"><span class="nav-number">1.11.2.</span> <span class="nav-text">2.通过修改“reward”和“γ”会改变最优策略</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E6%9C%80%E4%BC%98%E7%AD%96%E7%95%A5%E7%9A%84%E4%B8%8D%E5%8F%98%E6%80%A7"><span class="nav-number">1.11.3.</span> <span class="nav-text">3.最优策略的不变性</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
