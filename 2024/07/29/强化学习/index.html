@@ -20,12 +20,12 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="强化学习强化学习的终极目标：求解最优策略 ——第一节课（p1）1.agent​	基本上就是用于决策的模型整体 2.state​	 当前的状态, 以平面迷宫为例, 就是当前所处的格子。 ​		1. Stata space: 所有状态的集合。（ i 的范围从 1—9）  3.action​	可采取的行动, 还是以平面迷宫为例, 有上下左右移动或者原地不动5个action。 4.state transi">
+  <meta name="description" content="title:强化学习笔记强化学习强化学习的终极目标：求解最优策略 ——第一节课（p1）1.agent​	基本上就是用于决策的模型整体 2.state​	 当前的状态, 以平面迷宫为例, 就是当前所处的格子。 ​		1. Stata space: 所有状态的集合。（ i 的范围从 1—9）  3.action​	可采取的行动, 还是以平面迷宫为例, 有上下左右移动或者原地不动5个action。 4">
 <meta property="og:type" content="article">
-<meta property="og:title" content="强化学习笔记">
-<meta property="og:url" content="http://example.com/2024/07/25/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/index.html">
+<meta property="og:title" content="CuiShao Xin&#39;s Blog">
+<meta property="og:url" content="http://example.com/2024/07/29/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/index.html">
 <meta property="og:site_name" content="CuiShao Xin&#39;s Blog">
-<meta property="og:description" content="强化学习强化学习的终极目标：求解最优策略 ——第一节课（p1）1.agent​	基本上就是用于决策的模型整体 2.state​	 当前的状态, 以平面迷宫为例, 就是当前所处的格子。 ​		1. Stata space: 所有状态的集合。（ i 的范围从 1—9）  3.action​	可采取的行动, 还是以平面迷宫为例, 有上下左右移动或者原地不动5个action。 4.state transi">
+<meta property="og:description" content="title:强化学习笔记强化学习强化学习的终极目标：求解最优策略 ——第一节课（p1）1.agent​	基本上就是用于决策的模型整体 2.state​	 当前的状态, 以平面迷宫为例, 就是当前所处的格子。 ​		1. Stata space: 所有状态的集合。（ i 的范围从 1—9）  3.action​	可采取的行动, 还是以平面迷宫为例, 有上下左右移动或者原地不动5个action。 4">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240617145748004.png">
 <meta property="og:image" content="http://example.com/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240617153118346.png">
@@ -95,13 +95,35 @@
 <meta property="og:image" content="http://example.com/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240719162237012.png">
 <meta property="og:image" content="http://example.com/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240719162344758.png">
 <meta property="og:image" content="http://example.com/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240719162848871.png">
-<meta property="article:published_time" content="2024-07-25T03:29:33.993Z">
-<meta property="article:modified_time" content="2024-07-25T07:54:20.141Z">
+<meta property="og:image" content="http://example.com/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240727165222742.png">
+<meta property="og:image" content="http://example.com/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240727165623542.png">
+<meta property="og:image" content="http://example.com/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240729111932094.png">
+<meta property="og:image" content="http://example.com/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240729112205979.png">
+<meta property="og:image" content="http://example.com/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240729145336610.png">
+<meta property="og:image" content="http://example.com/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240729145520333.png">
+<meta property="og:image" content="http://example.com/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240729145726173.png">
+<meta property="og:image" content="http://example.com/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240729145910335.png">
+<meta property="og:image" content="http://example.com/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240729150140946.png">
+<meta property="og:image" content="http://example.com/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240729150314684.png">
+<meta property="og:image" content="http://example.com/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240729151504636.png">
+<meta property="og:image" content="http://example.com/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240729151656147.png">
+<meta property="og:image" content="http://example.com/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240729153558573.png">
+<meta property="og:image" content="http://example.com/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240729154039737.png">
+<meta property="og:image" content="http://example.com/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240729154101465.png">
+<meta property="og:image" content="http://example.com/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240729154153639.png">
+<meta property="og:image" content="http://example.com/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240729154202101.png">
+<meta property="og:image" content="http://example.com/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240729154413699.png">
+<meta property="og:image" content="http://example.com/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240729154425877.png">
+<meta property="og:image" content="http://example.com/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240729204941056.png">
+<meta property="og:image" content="http://example.com/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240729205206319.png">
+<meta property="og:image" content="http://example.com/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240729205639055.png">
+<meta property="article:published_time" content="2024-07-29T13:50:30.076Z">
+<meta property="article:modified_time" content="2024-07-29T13:49:55.252Z">
 <meta property="article:author" content="ShaoXin Cui">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://example.com/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240617145748004.png">
 
-<link rel="canonical" href="http://example.com/2024/07/25/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/">
+<link rel="canonical" href="http://example.com/2024/07/29/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/">
 
 
 <script id="page-configurations">
@@ -114,7 +136,7 @@
   };
 </script>
 
-  <title>强化学习笔记 | CuiShao Xin's Blog</title>
+  <title> | CuiShao Xin's Blog</title>
   
 
 
@@ -219,7 +241,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/07/25/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/07/29/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -232,7 +254,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          强化学习笔记
+          
         </h1>
 
         <div class="post-meta">
@@ -243,7 +265,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2024-07-25 11:29:33 / 修改时间：15:54:20" itemprop="dateCreated datePublished" datetime="2024-07-25T11:29:33+08:00">2024-07-25</time>
+              <time title="创建时间：2024-07-29 21:50:30 / 修改时间：21:49:55" itemprop="dateCreated datePublished" datetime="2024-07-29T21:50:30+08:00">2024-07-29</time>
             </span>
 
           
@@ -257,7 +279,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="强化学习"><a href="#强化学习" class="headerlink" title="强化学习"></a>强化学习</h2><p><u>强化学习的终极目标：求解最优策略</u></p>
+        <hr>
+<h2 id="title-强化学习笔记"><a href="#title-强化学习笔记" class="headerlink" title="title:强化学习笔记"></a>title:强化学习笔记</h2><h2 id="强化学习"><a href="#强化学习" class="headerlink" title="强化学习"></a>强化学习</h2><p><u>强化学习的终极目标：求解最优策略</u></p>
 <h3 id="——第一节课（p1）"><a href="#——第一节课（p1）" class="headerlink" title="——第一节课（p1）"></a>——第一节课（p1）</h3><h4 id="1-agent"><a href="#1-agent" class="headerlink" title="1.agent"></a>1.agent</h4><p>​	基本上就是用于决策的模型整体</p>
 <h4 id="2-state"><a href="#2-state" class="headerlink" title="2.state"></a><em>2</em>.state</h4><p>​	 当前的状态, 以平面迷宫为例, 就是当前所处的格子。</p>
 <p>​		<em>1.</em> Stata space: 所有状态的集合。（ i 的范围从 1—9）</p>
@@ -282,7 +305,7 @@
 <li><p><strong>（不确定的情况）</strong></p>
 </li>
 </ul>
-<p><img src="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240617154611741.png" alt="image-20240617154611741"></p>
+<p>​                                                                                                    <img src="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240617154611741.png" alt="image-20240617154611741">  </p>
 <h3 id="——第一节课（p2）"><a href="#——第一节课（p2）" class="headerlink" title="——第一节课（p2）"></a>——第一节课（p2）</h3><h4 id="1-reward"><a href="#1-reward" class="headerlink" title="1.reward"></a>1.reward</h4><ul>
 <li><p>正数：<strong>在采取某一个动作之后</strong>，会获得奖励。</p>
 </li>
@@ -377,14 +400,14 @@
 <p>​			需要注意的点：这个其实就是我们未来得到的奖励。	</p>
 <p>最终得到的结果: 	<img src="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240622211359926.png" alt="image-20240622211359926">		  </p>
 <p>贝尔曼公式的优点：</p>
-<p>​				①：可以描述不同状态的state value之前的关系。<img src="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240622214605992.png" alt="image-20240622214605992">与<img src="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240622214645269.png" alt="image-20240622214645269">之间的关系。</p>
+<p>​				①：可以描述<strong>不同状态</strong>的state value之前的关系。<img src="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240622214605992.png" alt="image-20240622214605992">与<img src="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240622214645269.png" alt="image-20240622214645269">之间的关系。【也可以是同一状态】</p>
 <p>​				②：这不仅仅是一个式子，对于所有的S 都可以实现。</p>
 <p>贝尔公式的本质：</p>
 <p><img src="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240715104533466.png" alt="image-20240715104533466"></p>
 <p>​	<strong>我们可以通过贝尔曼公式快速的将各个位置的state value计算出来：</strong></p>
 <p><img src="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240715105918534.png" alt="image-20240715105918534"></p>
 <p>四个未知数，四个方程求解每个状态非常简单直接给出答案。（state value 只和 y 有关）</p>
-<p>​                            <img src="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240715110206450.png" alt="image-20240715110206450">					</p>
+<p>​                                                             <img src="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240715110206450.png" alt="image-20240715110206450">					</p>
 <p>倘若我们设置一个γ&#x3D;0.9，则我们可以计算出各个状态的state value值。</p>
 <p><img src="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240715110912989.png" alt="image-20240715110912989"></p>
 <p>​			**<u>之前我们一直强调state value 代表着状态的价值，state value 越高。说明我们越要往那个地方走</u>**。根据计算和图标我们可以知道，S2，S3，S4都离目的地           <strong><u>更加的近</u></strong></p>
@@ -407,9 +430,9 @@
 </ul>
 <h4 id="2-action-value的定义"><a href="#2-action-value的定义" class="headerlink" title="2.action value的定义"></a>2.action value的定义</h4><p><img src="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240716160217245.png" alt="image-20240716160217245"></p>
 <p>​	举例说明action value：</p>
-<p>​        	<img src="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240717095247150.png" alt="image-20240717095247150"></p>
+<p>​                                                         	<img src="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240717095247150.png" alt="image-20240717095247150">···</p>
 <p>​			<strong>在状态S1的前提下，采取action a2的action value ：</strong>（等式的左边写法类似于state value）</p>
-<p>​						<img src="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240717095738268.png" alt="image-20240717095738268"></p>
+<p>​					                                	<img src="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240717095738268.png" alt="image-20240717095738268"></p>
 <ul>
 <li><u>需要注意的点，尽管S1仅仅只往右走，但是不表示他<strong>其他方向</strong>的action value为0。</u></li>
 </ul>
@@ -444,7 +467,7 @@
 <p><img src="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240717205846572.png" alt="image-20240717205846572"></p>
 <h3 id="——第三节课（p3）"><a href="#——第三节课（p3）" class="headerlink" title="——第三节课（p3）"></a>——第三节课（p3）</h3><h4 id="1-将贝尔曼最优公式写成v-f-v"><a href="#1-将贝尔曼最优公式写成v-f-v" class="headerlink" title="1.将贝尔曼最优公式写成v&#x3D;f(v)"></a>1.将贝尔曼最优公式写成v&#x3D;f(v)</h4><p><img src="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240719104532551.png" alt="image-20240719104532551"></p>
 <p>​	**对每一个v，都能求出一个max，这个max是和v有关的式子。那么把v看成变量，max就是v的函数了，把这个函数定义成f(v)**。因此贝尔曼最优公式则可以变成：</p>
-<p>​                                         	<img src="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240719104614360.png" alt="image-20240719104614360"></p>
+<p>​                                                                                   	<img src="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240719104614360.png" alt="image-20240719104614360"></p>
 <h4 id="2-Contraction-mapping-theorem（收缩映射定理）"><a href="#2-Contraction-mapping-theorem（收缩映射定理）" class="headerlink" title="2.Contraction mapping theorem（收缩映射定理）"></a>2.Contraction mapping theorem（收缩映射定理）</h4><ul>
 <li>Fixed point的概念：	<img src="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240719105138076.png" alt="image-20240719105138076"></li>
 </ul>
@@ -470,9 +493,12 @@
 <p><img src="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240719154439357.png" alt="image-20240719154439357"></p>
 <p>​	<u>因此贝尔曼最优公式可以也具有“收缩映射定理”的三条性质。</u></p>
 <ol>
-<li>贝尔曼公式一定存在一个解。我们用V<sup>*</sup>进行表示</li>
-<li>并且这个解是唯一的</li>
-<li>并且这个解可以通过<strong>迭代的方式</strong>将解求解出来。</li>
+<li><p>贝尔曼公式一定存在一个解。我们用V<sup>*</sup>进行表示（策略所对应的最佳state value是唯一的，但是这个策略不一定是唯一的）</p>
+</li>
+<li><p>并且这个解是唯一的。</p>
+</li>
+<li><p>并且这个解可以通过<strong>迭代的方式</strong>将解求解出来。（X<sub>k+1</sub>&#x3D;f(X<sub>k</sub>)）</p>
+</li>
 </ol>
 <h3 id="——第三节课（p4）"><a href="#——第三节课（p4）" class="headerlink" title="——第三节课（p4）"></a>——第三节课（p4）</h3><h4 id="1-影响贝尔曼最优公式的影响因素"><a href="#1-影响贝尔曼最优公式的影响因素" class="headerlink" title="1.影响贝尔曼最优公式的影响因素"></a>1.影响贝尔曼最优公式的影响因素</h4><p><img src="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240719160609559.png" alt="image-20240719160609559"></p>
 <ul>
@@ -494,7 +520,95 @@
 
 <h4 id="3-最优策略的不变性"><a href="#3-最优策略的不变性" class="headerlink" title="3.最优策略的不变性"></a>3.最优策略的不变性</h4><p><u><strong>如果将reward进行线性变化，变成新的reward。那么最优的策略不会变化。</strong></u></p>
 <p><img src="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240719162848871.png" alt="image-20240719162848871"></p>
-<p>​						</p>
+<h3 id="——第四节课（p1）"><a href="#——第四节课（p1）" class="headerlink" title="——第四节课（p1）"></a>——第四节课（p1）</h3><h4 id="1-值迭代算法（Value-interation）"><a href="#1-值迭代算法（Value-interation）" class="headerlink" title="1.值迭代算法（Value interation）"></a>1.值迭代算法（Value interation）</h4><ul>
+<li>贝尔曼最优公式：</li>
+</ul>
+<p>​	                  	<img src="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240727165222742.png" alt="image-20240727165222742"></p>
+<ul>
+<li><p>因为满足收<strong>缩映射定理</strong>，所以可以利用迭代进行计算。</p>
+<p><img src="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240727165623542.png" alt="image-20240727165623542"></p>
+</li>
+</ul>
+<h4 id="2-值迭代的步骤"><a href="#2-值迭代的步骤" class="headerlink" title="2.值迭代的步骤"></a>2.值迭代的步骤</h4><ul>
+<li><p>第一步：Policy update</p>
+<p>先求出下一步的最佳策略：先计算出每个状态下的action value ，此时最优的策略就是会选择最大的action value，也就是我们所说的Q<sub>k</sub>。下一步的最佳策略就是该Q<sub>k</sub>最大的action，这就是下一步的最佳策略，并且只要不是该action的，执行概率都是0。 </p>
+</li>
+<li><p>第二步：value update</p>
+<p>计算下一步状态的state value我们就要借助<strong>缩映射定理的结论</strong></p>
+<ul>
+<li><p><img src="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240729111932094.png" alt="image-20240729111932094"></p>
+</li>
+<li><p>然后我们把<strong>最佳策略带入</strong>，此时最佳策略是该Q<sub>k</sub>最大的action，并且只要不是该action的，执行概率都是0。 所以得到的结果也应该是Q<sub>k</sub>最大的值。这个值就是新的state value。</p>
+<p><img src="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240729112205979.png" alt="image-20240729112205979"></p>
+</li>
+</ul>
+</li>
+</ul>
+<p>​			</p>
+<h4 id="3-举例说明"><a href="#3-举例说明" class="headerlink" title="3.举例说明"></a>3.举例说明</h4><p><img src="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240729145336610.png" alt="image-20240729145336610"></p>
+<ul>
+<li>先计算出每个状态下的【向上，向右，向下，向左，原地不动的】action value。</li>
+</ul>
+<p><img src="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240729145520333.png" alt="image-20240729145520333"></p>
+<p><img src="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240729145726173.png" alt="image-20240729145726173"></p>
+<ul>
+<li>对于每一个状态而言，最优的策略就是会选择最大的action value，也就是我们所说的Q<sub>k</sub>。</li>
+</ul>
+<p><img src="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240729145910335.png" alt="image-20240729145910335"></p>
+<ul>
+<li>然后我们把<strong>最佳策略带入</strong>，此时最佳策略是该Q<sub>k</sub>最大的action，并且只要不是该action的，执行概率都是0。 所以得到的结果也应该是Q<sub>k</sub>最大的值。这个值就是新的state value。</li>
+</ul>
+<p><img src="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240729150140946.png" alt="image-20240729150140946"></p>
+<p>因此，新的策略和新的state value的状态如下。也就是上图的图（b）。</p>
+<p><img src="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240729150314684.png" alt="image-20240729150314684"></p>
+<p>然后不断的进行迭代可以得到新的策略，新的state value。<strong>一直到V<sub>k</sub>—V<sub>k+1</sub>是一个很小的数的时候停止迭代</strong>。</p>
+<h3 id="——第四节课（p2）"><a href="#——第四节课（p2）" class="headerlink" title="——第四节课（p2）"></a>——第四节课（p2）</h3><h4 id="1-策略迭代算法（policy-evaluation）"><a href="#1-策略迭代算法（policy-evaluation）" class="headerlink" title="1.策略迭代算法（policy evaluation）"></a>1.策略迭代算法（policy evaluation）</h4><p>【策略迭代算法其实是基于价值迭代算法的一个结果】</p>
+<ul>
+<li>先任意给定一个策略Π，然后通过这个策略，利用贝尔曼公式得到相对应的state value【利用：<strong>贝尔曼公式</strong>】</li>
+</ul>
+<p>​	<img src="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240729151504636.png" alt="image-20240729151504636"></p>
+<ul>
+<li>然后通过求解，action value进行获得下一步更好的策略。【利用：<strong>贝尔曼最优公式</strong>】</li>
+</ul>
+<p><img src="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240729151656147.png" alt="image-20240729151656147"></p>
+<h4 id="2-举例说明"><a href="#2-举例说明" class="headerlink" title="2.举例说明"></a>2.举例说明</h4><ul>
+<li>初始的策略是如图（a）所示。</li>
+</ul>
+<p><img src="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240729153558573.png" alt="image-20240729153558573"></p>
+<ul>
+<li>先通过贝尔曼公式去计算每个状态的state value。</li>
+</ul>
+<p><img src="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240729154039737.png" alt="image-20240729154039737"></p>
+<p><img src="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240729154101465.png" alt="image-20240729154101465"></p>
+<ul>
+<li><p>倘若数据复杂的话，则得使用<strong>迭代的算法计算state value。</strong></p>
+</li>
+<li><p>然后计算每个状态的action value，然后做出比较并且选出新的策略。</p>
+</li>
+</ul>
+<p><img src="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240729154153639.png" alt="image-20240729154153639"></p>
+<p><img src="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240729154202101.png" alt="image-20240729154202101"></p>
+<ul>
+<li>通过计算计算出每个状态下最优的策略。然后将策略进行更新。（如图（b）所示）</li>
+</ul>
+<p><img src="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240729154413699.png" alt="image-20240729154413699"></p>
+<p><img src="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240729154425877.png" alt="image-20240729154425877"></p>
+<h3 id="——第四节课（p3）"><a href="#——第四节课（p3）" class="headerlink" title="——第四节课（p3）"></a>——第四节课（p3）</h3><h4 id="1-策略迭代算法与价值迭代算法的区别"><a href="#1-策略迭代算法与价值迭代算法的区别" class="headerlink" title="1.策略迭代算法与价值迭代算法的区别"></a>1.策略迭代算法与价值迭代算法的区别</h4><p><img src="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240729204941056.png" alt="image-20240729204941056"></p>
+<ul>
+<li><p>值迭代算法中, 这一步仅迭代一次,而策略迭代算法中这里要反复无限次的迭代, 直到找出稳定的state value, 再进行下一步。</p>
+<ul>
+<li><p>无限次迭代的含义：（简单的话可以直接计算）</p>
+<p><img src="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240729205206319.png" alt="image-20240729205206319"></p>
+</li>
+</ul>
+</li>
+<li><p>策略迭代<strong>尽管在策略评估中可能需要进行多次迭代</strong>，但其通过策略改进步骤的逐步提升，<strong>能够更快地收敛到最优策略。</strong>而价值迭代需要在每次更新中逐步调整所有状态的价值函数，通常需要更多的迭代次数来达到收敛。</p>
+</li>
+</ul>
+<h4 id="2-截断策略迭代"><a href="#2-截断策略迭代" class="headerlink" title="2.截断策略迭代"></a>2.截断策略迭代</h4><ul>
+<li>定义：就是基于”策略迭代算法”与”价值迭代算法”中迭代次数取上一个中间的值。（比如说：我只计算<strong>j</strong>次）不需要向策略迭代算法一样迭代无数次。state value迭代到 j 次也就是vj时，不管有没有收敛都直接到下一步。</li>
+</ul>
+<p><img src="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240729205639055.png" alt="image-20240729205639055"></p>
 
     </div>
 
@@ -510,13 +624,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2024/07/24/hello-world/" rel="prev" title="Hello World">
-      <i class="fa fa-chevron-left"></i> Hello World
+    <a href="/2024/07/25/pytorch%E5%AE%89%E8%A3%85jupyter%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/" rel="prev" title="在pytorch环境中安装jupyter所遇到的问题">
+      <i class="fa fa-chevron-left"></i> 在pytorch环境中安装jupyter所遇到的问题
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2024/07/25/pytorch%E5%AE%89%E8%A3%85jupyter%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/" rel="next" title="在pytorch环境中安装jupyter所遇到的问题">
-      在pytorch环境中安装jupyter所遇到的问题 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -575,7 +686,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0"><span class="nav-number">1.</span> <span class="nav-text">强化学习</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%80%94%E2%80%94%E7%AC%AC%E4%B8%80%E8%8A%82%E8%AF%BE%EF%BC%88p1%EF%BC%89"><span class="nav-number">1.1.</span> <span class="nav-text">——第一节课（p1）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-agent"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.agent</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-state"><span class="nav-number">1.1.2.</span> <span class="nav-text">2.state</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-action"><span class="nav-number">1.1.3.</span> <span class="nav-text">3.action</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-state-transition"><span class="nav-number">1.1.4.</span> <span class="nav-text">4.state transition</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-forbidden-area"><span class="nav-number">1.1.5.</span> <span class="nav-text">5.forbidden area</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-state-transition-probability"><span class="nav-number">1.1.6.</span> <span class="nav-text">6.state transition probability</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-policy"><span class="nav-number">1.1.7.</span> <span class="nav-text">7.policy</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%80%94%E2%80%94%E7%AC%AC%E4%B8%80%E8%8A%82%E8%AF%BE%EF%BC%88p2%EF%BC%89"><span class="nav-number">1.2.</span> <span class="nav-text">——第一节课（p2）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-reward"><span class="nav-number">1.2.1.</span> <span class="nav-text">1.reward</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-trajectory"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.trajectory</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-return"><span class="nav-number">1.2.3.</span> <span class="nav-text">3.return</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-discounted-return"><span class="nav-number">1.2.4.</span> <span class="nav-text">4.discounted return</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-episode"><span class="nav-number">1.2.5.</span> <span class="nav-text">5.episode</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">1.2.6.</span> <span class="nav-text">总结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%80%94%E2%80%94%E7%AC%AC%E4%BA%8C%E8%8A%82%E8%AF%BE%EF%BC%88p1%EF%BC%89"><span class="nav-number">1.3.</span> <span class="nav-text">——第二节课（p1）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E4%B8%BE%E4%BE%8B"><span class="nav-number">1.3.1.</span> <span class="nav-text">1.举例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E5%A6%82%E4%BD%95%E8%AE%A1%E7%AE%97return"><span class="nav-number">1.3.2.</span> <span class="nav-text">2.如何计算return</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E8%B4%9D%E5%B0%94%E6%9B%BC%E5%85%AC%E5%BC%8F%E7%9A%84%E6%8E%A8%E5%AF%BC%EF%BC%88%E7%89%B9%E6%AE%8A%E6%80%A7%EF%BC%89"><span class="nav-number">1.3.3.</span> <span class="nav-text">3.贝尔曼公式的推导（特殊性）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%80%94%E2%80%94%E7%AC%AC%E4%BA%8C%E8%8A%82%E8%AF%BE%EF%BC%88p2%EF%BC%89"><span class="nav-number">1.4.</span> <span class="nav-text">——第二节课（p2）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-state-value"><span class="nav-number">1.4.1.</span> <span class="nav-text">1.state value</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E4%B8%BE%E4%BE%8B"><span class="nav-number">1.4.2.</span> <span class="nav-text">2.举例</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%80%94%E2%80%94%E7%AC%AC%E4%BA%8C%E8%8A%82%E8%AF%BE%EF%BC%88p3%EF%BC%89"><span class="nav-number">1.5.</span> <span class="nav-text">——第二节课（p3）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E8%B4%9D%E5%B0%94%E6%9B%BC%E5%85%AC%E5%BC%8F%E6%99%AE%E9%81%8D%E6%80%A7%E6%8E%A8%E5%AF%BC"><span class="nav-number">1.5.1.</span> <span class="nav-text">1.贝尔曼公式普遍性推导</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%80%94%E2%80%94%E7%AC%AC%E4%BA%8C%E8%8A%82%E8%AF%BE%EF%BC%88p4%EF%BC%89"><span class="nav-number">1.6.</span> <span class="nav-text">——第二节课（p4）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E8%B4%9D%E5%B0%94%E6%9B%BC%E7%9F%A9%E9%98%B5%E5%90%91%E9%87%8F%E5%BD%A2%E5%BC%8F%EF%BC%88matrix-vector-form%EF%BC%89%E7%9A%84%E6%8E%A8%E5%AF%BC"><span class="nav-number">1.6.1.</span> <span class="nav-text">1.贝尔曼矩阵向量形式（matrix-vector form）的推导</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%80%94%E2%80%94%E7%AC%AC%E4%BA%8C%E8%8A%82%E8%AF%BE%EF%BC%88p5%EF%BC%89"><span class="nav-number">1.7.</span> <span class="nav-text">——第二节课（p5）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-state-value%E5%92%8Caction-value%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">1.7.1.</span> <span class="nav-text">1.state value和action value的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-action-value%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="nav-number">1.7.2.</span> <span class="nav-text">2.action value的定义</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%80%94%E2%80%94%E7%AC%AC%E4%B8%89%E8%8A%82%E8%AF%BE%EF%BC%88p1%EF%BC%89"><span class="nav-number">1.8.</span> <span class="nav-text">——第三节课（p1）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E9%80%9A%E8%BF%87%E4%BE%8B%E5%AD%90%E5%BC%95%E5%87%BA%E2%80%9D%E8%B4%9D%E5%B0%94%E6%9B%BC%E6%9C%80%E4%BC%98%E5%85%AC%E5%BC%8F%E2%80%9C"><span class="nav-number">1.8.1.</span> <span class="nav-text">1.通过例子引出”贝尔曼最优公式“</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%80%94%E2%80%94%E7%AC%AC%E4%B8%89%E8%8A%82%E8%AF%BE%EF%BC%88p2%EF%BC%89"><span class="nav-number">1.9.</span> <span class="nav-text">——第三节课（p2）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E8%B4%9D%E5%B0%94%E6%9B%BC%E6%9C%80%E4%BC%98%E5%85%AC%E5%BC%8F"><span class="nav-number">1.9.1.</span> <span class="nav-text">1.贝尔曼最优公式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E5%A6%82%E4%BD%95%E6%B1%82%E8%A7%A3%E8%B4%9D%E5%B0%94%E6%9B%BC%E6%9C%80%E4%BC%98%E5%85%AC%E5%BC%8F"><span class="nav-number">1.9.2.</span> <span class="nav-text">2.如何求解贝尔曼最优公式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%80%94%E2%80%94%E7%AC%AC%E4%B8%89%E8%8A%82%E8%AF%BE%EF%BC%88p3%EF%BC%89"><span class="nav-number">1.10.</span> <span class="nav-text">——第三节课（p3）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E5%B0%86%E8%B4%9D%E5%B0%94%E6%9B%BC%E6%9C%80%E4%BC%98%E5%85%AC%E5%BC%8F%E5%86%99%E6%88%90v-f-v"><span class="nav-number">1.10.1.</span> <span class="nav-text">1.将贝尔曼最优公式写成v&#x3D;f(v)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-Contraction-mapping-theorem%EF%BC%88%E6%94%B6%E7%BC%A9%E6%98%A0%E5%B0%84%E5%AE%9A%E7%90%86%EF%BC%89"><span class="nav-number">1.10.2.</span> <span class="nav-text">2.Contraction mapping theorem（收缩映射定理）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%80%94%E2%80%94%E7%AC%AC%E4%B8%89%E8%8A%82%E8%AF%BE%EF%BC%88p4%EF%BC%89"><span class="nav-number">1.11.</span> <span class="nav-text">——第三节课（p4）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E5%BD%B1%E5%93%8D%E8%B4%9D%E5%B0%94%E6%9B%BC%E6%9C%80%E4%BC%98%E5%85%AC%E5%BC%8F%E7%9A%84%E5%BD%B1%E5%93%8D%E5%9B%A0%E7%B4%A0"><span class="nav-number">1.11.1.</span> <span class="nav-text">1.影响贝尔曼最优公式的影响因素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E9%80%9A%E8%BF%87%E4%BF%AE%E6%94%B9%E2%80%9Creward%E2%80%9D%E5%92%8C%E2%80%9C%CE%B3%E2%80%9D%E4%BC%9A%E6%94%B9%E5%8F%98%E6%9C%80%E4%BC%98%E7%AD%96%E7%95%A5"><span class="nav-number">1.11.2.</span> <span class="nav-text">2.通过修改“reward”和“γ”会改变最优策略</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E6%9C%80%E4%BC%98%E7%AD%96%E7%95%A5%E7%9A%84%E4%B8%8D%E5%8F%98%E6%80%A7"><span class="nav-number">1.11.3.</span> <span class="nav-text">3.最优策略的不变性</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#title-%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0"><span class="nav-number">1.</span> <span class="nav-text">title:强化学习笔记</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0"><span class="nav-number">2.</span> <span class="nav-text">强化学习</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%80%94%E2%80%94%E7%AC%AC%E4%B8%80%E8%8A%82%E8%AF%BE%EF%BC%88p1%EF%BC%89"><span class="nav-number">2.1.</span> <span class="nav-text">——第一节课（p1）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-agent"><span class="nav-number">2.1.1.</span> <span class="nav-text">1.agent</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-state"><span class="nav-number">2.1.2.</span> <span class="nav-text">2.state</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-action"><span class="nav-number">2.1.3.</span> <span class="nav-text">3.action</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-state-transition"><span class="nav-number">2.1.4.</span> <span class="nav-text">4.state transition</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-forbidden-area"><span class="nav-number">2.1.5.</span> <span class="nav-text">5.forbidden area</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-state-transition-probability"><span class="nav-number">2.1.6.</span> <span class="nav-text">6.state transition probability</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-policy"><span class="nav-number">2.1.7.</span> <span class="nav-text">7.policy</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%80%94%E2%80%94%E7%AC%AC%E4%B8%80%E8%8A%82%E8%AF%BE%EF%BC%88p2%EF%BC%89"><span class="nav-number">2.2.</span> <span class="nav-text">——第一节课（p2）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-reward"><span class="nav-number">2.2.1.</span> <span class="nav-text">1.reward</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-trajectory"><span class="nav-number">2.2.2.</span> <span class="nav-text">2.trajectory</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-return"><span class="nav-number">2.2.3.</span> <span class="nav-text">3.return</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-discounted-return"><span class="nav-number">2.2.4.</span> <span class="nav-text">4.discounted return</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-episode"><span class="nav-number">2.2.5.</span> <span class="nav-text">5.episode</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">2.2.6.</span> <span class="nav-text">总结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%80%94%E2%80%94%E7%AC%AC%E4%BA%8C%E8%8A%82%E8%AF%BE%EF%BC%88p1%EF%BC%89"><span class="nav-number">2.3.</span> <span class="nav-text">——第二节课（p1）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E4%B8%BE%E4%BE%8B"><span class="nav-number">2.3.1.</span> <span class="nav-text">1.举例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E5%A6%82%E4%BD%95%E8%AE%A1%E7%AE%97return"><span class="nav-number">2.3.2.</span> <span class="nav-text">2.如何计算return</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E8%B4%9D%E5%B0%94%E6%9B%BC%E5%85%AC%E5%BC%8F%E7%9A%84%E6%8E%A8%E5%AF%BC%EF%BC%88%E7%89%B9%E6%AE%8A%E6%80%A7%EF%BC%89"><span class="nav-number">2.3.3.</span> <span class="nav-text">3.贝尔曼公式的推导（特殊性）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%80%94%E2%80%94%E7%AC%AC%E4%BA%8C%E8%8A%82%E8%AF%BE%EF%BC%88p2%EF%BC%89"><span class="nav-number">2.4.</span> <span class="nav-text">——第二节课（p2）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-state-value"><span class="nav-number">2.4.1.</span> <span class="nav-text">1.state value</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E4%B8%BE%E4%BE%8B"><span class="nav-number">2.4.2.</span> <span class="nav-text">2.举例</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%80%94%E2%80%94%E7%AC%AC%E4%BA%8C%E8%8A%82%E8%AF%BE%EF%BC%88p3%EF%BC%89"><span class="nav-number">2.5.</span> <span class="nav-text">——第二节课（p3）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E8%B4%9D%E5%B0%94%E6%9B%BC%E5%85%AC%E5%BC%8F%E6%99%AE%E9%81%8D%E6%80%A7%E6%8E%A8%E5%AF%BC"><span class="nav-number">2.5.1.</span> <span class="nav-text">1.贝尔曼公式普遍性推导</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%80%94%E2%80%94%E7%AC%AC%E4%BA%8C%E8%8A%82%E8%AF%BE%EF%BC%88p4%EF%BC%89"><span class="nav-number">2.6.</span> <span class="nav-text">——第二节课（p4）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E8%B4%9D%E5%B0%94%E6%9B%BC%E7%9F%A9%E9%98%B5%E5%90%91%E9%87%8F%E5%BD%A2%E5%BC%8F%EF%BC%88matrix-vector-form%EF%BC%89%E7%9A%84%E6%8E%A8%E5%AF%BC"><span class="nav-number">2.6.1.</span> <span class="nav-text">1.贝尔曼矩阵向量形式（matrix-vector form）的推导</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%80%94%E2%80%94%E7%AC%AC%E4%BA%8C%E8%8A%82%E8%AF%BE%EF%BC%88p5%EF%BC%89"><span class="nav-number">2.7.</span> <span class="nav-text">——第二节课（p5）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-state-value%E5%92%8Caction-value%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">2.7.1.</span> <span class="nav-text">1.state value和action value的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-action-value%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="nav-number">2.7.2.</span> <span class="nav-text">2.action value的定义</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%80%94%E2%80%94%E7%AC%AC%E4%B8%89%E8%8A%82%E8%AF%BE%EF%BC%88p1%EF%BC%89"><span class="nav-number">2.8.</span> <span class="nav-text">——第三节课（p1）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E9%80%9A%E8%BF%87%E4%BE%8B%E5%AD%90%E5%BC%95%E5%87%BA%E2%80%9D%E8%B4%9D%E5%B0%94%E6%9B%BC%E6%9C%80%E4%BC%98%E5%85%AC%E5%BC%8F%E2%80%9C"><span class="nav-number">2.8.1.</span> <span class="nav-text">1.通过例子引出”贝尔曼最优公式“</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%80%94%E2%80%94%E7%AC%AC%E4%B8%89%E8%8A%82%E8%AF%BE%EF%BC%88p2%EF%BC%89"><span class="nav-number">2.9.</span> <span class="nav-text">——第三节课（p2）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E8%B4%9D%E5%B0%94%E6%9B%BC%E6%9C%80%E4%BC%98%E5%85%AC%E5%BC%8F"><span class="nav-number">2.9.1.</span> <span class="nav-text">1.贝尔曼最优公式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E5%A6%82%E4%BD%95%E6%B1%82%E8%A7%A3%E8%B4%9D%E5%B0%94%E6%9B%BC%E6%9C%80%E4%BC%98%E5%85%AC%E5%BC%8F"><span class="nav-number">2.9.2.</span> <span class="nav-text">2.如何求解贝尔曼最优公式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%80%94%E2%80%94%E7%AC%AC%E4%B8%89%E8%8A%82%E8%AF%BE%EF%BC%88p3%EF%BC%89"><span class="nav-number">2.10.</span> <span class="nav-text">——第三节课（p3）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E5%B0%86%E8%B4%9D%E5%B0%94%E6%9B%BC%E6%9C%80%E4%BC%98%E5%85%AC%E5%BC%8F%E5%86%99%E6%88%90v-f-v"><span class="nav-number">2.10.1.</span> <span class="nav-text">1.将贝尔曼最优公式写成v&#x3D;f(v)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-Contraction-mapping-theorem%EF%BC%88%E6%94%B6%E7%BC%A9%E6%98%A0%E5%B0%84%E5%AE%9A%E7%90%86%EF%BC%89"><span class="nav-number">2.10.2.</span> <span class="nav-text">2.Contraction mapping theorem（收缩映射定理）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%80%94%E2%80%94%E7%AC%AC%E4%B8%89%E8%8A%82%E8%AF%BE%EF%BC%88p4%EF%BC%89"><span class="nav-number">2.11.</span> <span class="nav-text">——第三节课（p4）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E5%BD%B1%E5%93%8D%E8%B4%9D%E5%B0%94%E6%9B%BC%E6%9C%80%E4%BC%98%E5%85%AC%E5%BC%8F%E7%9A%84%E5%BD%B1%E5%93%8D%E5%9B%A0%E7%B4%A0"><span class="nav-number">2.11.1.</span> <span class="nav-text">1.影响贝尔曼最优公式的影响因素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E9%80%9A%E8%BF%87%E4%BF%AE%E6%94%B9%E2%80%9Creward%E2%80%9D%E5%92%8C%E2%80%9C%CE%B3%E2%80%9D%E4%BC%9A%E6%94%B9%E5%8F%98%E6%9C%80%E4%BC%98%E7%AD%96%E7%95%A5"><span class="nav-number">2.11.2.</span> <span class="nav-text">2.通过修改“reward”和“γ”会改变最优策略</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E6%9C%80%E4%BC%98%E7%AD%96%E7%95%A5%E7%9A%84%E4%B8%8D%E5%8F%98%E6%80%A7"><span class="nav-number">2.11.3.</span> <span class="nav-text">3.最优策略的不变性</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%80%94%E2%80%94%E7%AC%AC%E5%9B%9B%E8%8A%82%E8%AF%BE%EF%BC%88p1%EF%BC%89"><span class="nav-number">2.12.</span> <span class="nav-text">——第四节课（p1）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E5%80%BC%E8%BF%AD%E4%BB%A3%E7%AE%97%E6%B3%95%EF%BC%88Value-interation%EF%BC%89"><span class="nav-number">2.12.1.</span> <span class="nav-text">1.值迭代算法（Value interation）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E5%80%BC%E8%BF%AD%E4%BB%A3%E7%9A%84%E6%AD%A5%E9%AA%A4"><span class="nav-number">2.12.2.</span> <span class="nav-text">2.值迭代的步骤</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E4%B8%BE%E4%BE%8B%E8%AF%B4%E6%98%8E"><span class="nav-number">2.12.3.</span> <span class="nav-text">3.举例说明</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%80%94%E2%80%94%E7%AC%AC%E5%9B%9B%E8%8A%82%E8%AF%BE%EF%BC%88p2%EF%BC%89"><span class="nav-number">2.13.</span> <span class="nav-text">——第四节课（p2）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E7%AD%96%E7%95%A5%E8%BF%AD%E4%BB%A3%E7%AE%97%E6%B3%95%EF%BC%88policy-evaluation%EF%BC%89"><span class="nav-number">2.13.1.</span> <span class="nav-text">1.策略迭代算法（policy evaluation）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E4%B8%BE%E4%BE%8B%E8%AF%B4%E6%98%8E"><span class="nav-number">2.13.2.</span> <span class="nav-text">2.举例说明</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%80%94%E2%80%94%E7%AC%AC%E5%9B%9B%E8%8A%82%E8%AF%BE%EF%BC%88p3%EF%BC%89"><span class="nav-number">2.14.</span> <span class="nav-text">——第四节课（p3）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E7%AD%96%E7%95%A5%E8%BF%AD%E4%BB%A3%E7%AE%97%E6%B3%95%E4%B8%8E%E4%BB%B7%E5%80%BC%E8%BF%AD%E4%BB%A3%E7%AE%97%E6%B3%95%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">2.14.1.</span> <span class="nav-text">1.策略迭代算法与价值迭代算法的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E6%88%AA%E6%96%AD%E7%AD%96%E7%95%A5%E8%BF%AD%E4%BB%A3"><span class="nav-number">2.14.2.</span> <span class="nav-text">2.截断策略迭代</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
