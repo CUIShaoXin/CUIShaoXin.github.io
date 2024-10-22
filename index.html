@@ -170,10 +170,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2024-07-29 21:50:30 / 修改时间：21:49:55" itemprop="dateCreated datePublished" datetime="2024-07-29T21:50:30+08:00">2024-07-29</time>
+              <time title="创建时间：2024-07-29 21:50:30" itemprop="dateCreated datePublished" datetime="2024-07-29T21:50:30+08:00">2024-07-29</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2024-10-22 20:55:11" itemprop="dateModified" datetime="2024-10-22T20:55:11+08:00">2024-10-22</time>
+              </span>
 
           
 
@@ -186,8 +192,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <hr>
-<h2 id="title-强化学习笔记"><a href="#title-强化学习笔记" class="headerlink" title="title:强化学习笔记"></a>title:强化学习笔记</h2><h2 id="强化学习"><a href="#强化学习" class="headerlink" title="强化学习"></a>强化学习</h2><p><u>强化学习的终极目标：求解最优策略</u></p>
+          <h2 id="强化学习"><a href="#强化学习" class="headerlink" title="强化学习"></a>强化学习</h2><p><u>强化学习的终极目标：求解最优策略</u></p>
 <h3 id="——第一节课（p1）"><a href="#——第一节课（p1）" class="headerlink" title="——第一节课（p1）"></a>——第一节课（p1）</h3><h4 id="1-agent"><a href="#1-agent" class="headerlink" title="1.agent"></a>1.agent</h4><p>​	基本上就是用于决策的模型整体</p>
 <h4 id="2-state"><a href="#2-state" class="headerlink" title="2.state"></a><em>2</em>.state</h4><p>​	 当前的状态, 以平面迷宫为例, 就是当前所处的格子。</p>
 <p>​		<em>1.</em> Stata space: 所有状态的集合。（ i 的范围从 1—9）</p>
@@ -459,11 +464,10 @@
 <p><img src="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240729145520333.png" alt="image-20240729145520333"></p>
 <p><img src="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240729145726173.png" alt="image-20240729145726173"></p>
 <ul>
-<li>对于每一个状态而言，最优的策略就是会选择最大的action value，也就是我们所说的Q<sub>k</sub>。</li>
-</ul>
-<p><img src="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240729145910335.png" alt="image-20240729145910335"></p>
-<ul>
-<li>然后我们把<strong>最佳策略带入</strong>，此时最佳策略是该Q<sub>k</sub>最大的action，并且只要不是该action的，执行概率都是0。 所以得到的结果也应该是Q<sub>k</sub>最大的值。这个值就是新的state value。</li>
+<li><p>对于每一个状态而言，最优的策略就是会选择最大的action value，也就是我们所说的Q<sub>k</sub>。<img src="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240729145910335.png" alt="image-20240729145910335"></p>
+</li>
+<li><p>然后我们把<strong>最佳策略带入</strong>，此时最佳策略是该Q<sub>k</sub>最大的action，并且只要不是该action的，执行概率都是0。 所以得到的结果也应该是Q<sub>k</sub>最大的值。这个值就是新的state value。</p>
+</li>
 </ul>
 <p><img src="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240729150140946.png" alt="image-20240729150140946"></p>
 <p>因此，新的策略和新的state value的状态如下。也就是上图的图（b）。</p>
@@ -512,10 +516,340 @@
 <li><p>策略迭代<strong>尽管在策略评估中可能需要进行多次迭代</strong>，但其通过策略改进步骤的逐步提升，<strong>能够更快地收敛到最优策略。</strong>而价值迭代需要在每次更新中逐步调整所有状态的价值函数，通常需要更多的迭代次数来达到收敛。</p>
 </li>
 </ul>
-<h4 id="2-截断策略迭代"><a href="#2-截断策略迭代" class="headerlink" title="2.截断策略迭代"></a>2.截断策略迭代</h4><ul>
+<h4 id="2-截断策略迭代（Iteration-of-truncation-strategies）"><a href="#2-截断策略迭代（Iteration-of-truncation-strategies）" class="headerlink" title="2.截断策略迭代（Iteration of truncation strategies）"></a>2.截断策略迭代（Iteration of truncation strategies）</h4><ul>
 <li>定义：就是基于”策略迭代算法”与”价值迭代算法”中迭代次数取上一个中间的值。（比如说：我只计算<strong>j</strong>次）不需要向策略迭代算法一样迭代无数次。state value迭代到 j 次也就是vj时，不管有没有收敛都直接到下一步。</li>
 </ul>
 <p><img src="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240729205639055.png" alt="image-20240729205639055"></p>
+<h3 id="——第五节课（p1）"><a href="#——第五节课（p1）" class="headerlink" title="——第五节课（p1）"></a>——第五节课（p1）</h3><h4 id="1-通过例子介绍蒙特卡洛"><a href="#1-通过例子介绍蒙特卡洛" class="headerlink" title="1.通过例子介绍蒙特卡洛"></a>1.通过例子介绍蒙特卡洛</h4><p>​	<strong>model-based</strong>到<strong>model-free</strong>最重要的是通过<strong>蒙特卡洛估计</strong>。并且通过<strong>大数定律</strong>（law of large number）来估计<strong>概率</strong>。</p>
+<ul>
+<li><p><strong>model-Based思想:</strong></p>
+<p>在之前讲到的model-Base 的算法中, 我们将一些提前准备好的状态空间, 奖励或动作的概率分布直接存储在模型(model)中, 因此我们能够精确的计算它们的数学期望,例如:50%+1.0reward 50%-1.0reward 时, 直接计算奖励的数学期望就是0.5<em>1.0 + 0.5</em>(-1.0) &#x3D; 0.0。</p>
+</li>
+<li><p><strong>model-Free思想:</strong></p>
+</li>
+</ul>
+<p>​		model-Free意味着我们不再拥有这些信息, 只能通过多次实验取平均值的方式近似的估计期望。</p>
+<h3 id="——第五节课（p2）"><a href="#——第五节课（p2）" class="headerlink" title="——第五节课（p2）"></a>——第五节课（p2）</h3><h4 id="1-MC-basic-算法（赵老师自己写出的算法，便于理解的）"><a href="#1-MC-basic-算法（赵老师自己写出的算法，便于理解的）" class="headerlink" title="1.MC basic 算法（赵老师自己写出的算法，便于理解的）"></a>1.MC basic 算法（赵老师自己写出的算法，便于理解的）</h4><p>​	 将<strong>策略迭代算法</strong>中**”策略评估”** 的部分, 由原来基于模型直接计算, 替换成基于多次实验采样来计算, 就得到了MC basic，所以MC basic的过程几乎与策略迭代算法相同。</p>
+<ul>
+<li><p>并且action value本来就有两种计算方法，一种基于模型直接计算的，另外一种基于多次实验采样来计算。</p>
+<ul>
+<li><p>基于模型直接计算的：</p>
+<p><img src="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240730170009613.png" alt="image-20240730170009613"></p>
+</li>
+<li><p>基于多次实验采样的：</p>
+<p><img src="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240730170038330.png" alt="image-20240730170038330"></p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="2-求解MC-basic的步骤"><a href="#2-求解MC-basic的步骤" class="headerlink" title="2.求解MC basic的步骤"></a>2.求解MC basic的步骤</h4><ul>
+<li><p>首先从一个状态中的一个动作出发, 进行N次实验(episode)来收集数据。<strong>（episode的长度即为：并不是指迭代次数，可以将其理解为探索步数，当所有状态都可以在探索步数内到达目标点时策略就已经最优了）</strong></p>
+<ul>
+<li>比如在状态s1 , 我们多次从动作a1开始行动 并累计得到的结果(计算 discount return)</li>
+</ul>
+</li>
+<li><p>最后把这些结果取平均, 来代替原本依赖模型计算出的的结果。（这些数据就是<strong>“经验”</strong>）</p>
+</li>
+</ul>
+<p><img src="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240730170948048.png" alt="image-20240730170948048"></p>
+<ul>
+<li><p>对于每一个state, 求出它能进行的所有动作(action)的行动价值(action value)</p>
+<p>选择行动价值(action value)最大的动作(action), 更新策略。</p>
+</li>
+</ul>
+<h3 id="——第五节课（p3）"><a href="#——第五节课（p3）" class="headerlink" title="——第五节课（p3）"></a>——第五节课（p3）</h3><h4 id="1-MC-Basic的例子"><a href="#1-MC-Basic的例子" class="headerlink" title="1.MC Basic的例子"></a>1.MC Basic的例子</h4><p>​	<img src="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240730193940153.png" alt="image-20240730193940153"></p>
+<ul>
+<li><p>先给定特定的策略，然后通过action value的定义进行计算。</p>
+<ul>
+<li>（S1，a1）<ul>
+<li><img src="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240730194700181.png" alt="image-20240730194700181"></li>
+</ul>
+</li>
+<li>（S1，a2）<ul>
+<li><img src="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240730194620142.png" alt="image-20240730194620142"></li>
+</ul>
+</li>
+<li>（S1，a3）<ul>
+<li><img src="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240730194744298.png" alt="image-20240730194744298"></li>
+</ul>
+</li>
+<li>（S1，a4）<ul>
+<li><img src="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240730194819490.png" alt="image-20240730194819490"></li>
+</ul>
+</li>
+<li>（S1，a5）<ul>
+<li><img src="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240730194853095.png" alt="image-20240730194853095"></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>之后类似于<strong>策略迭代算法</strong>，进行<strong>Policy improvemt</strong></p>
+<ul>
+<li><img src="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240730195041697.png" alt="image-20240730195041697"></li>
+</ul>
+</li>
+</ul>
+<h3 id="——第五节课（p4）"><a href="#——第五节课（p4）" class="headerlink" title="——第五节课（p4）"></a>——第五节课（p4）</h3><h4 id="1-MC-Exploring-Starts"><a href="#1-MC-Exploring-Starts" class="headerlink" title="1.MC Exploring Starts"></a>1.MC Exploring Starts</h4><p>​	<code>exploring starts其实不是一种算法的名字,这个是一个条件:为了确保所有action都被探索到, 简单的想法是确保每个(s, a)都发起(Start)一个episode</code></p>
+<ul>
+<li><p>MC Basic因为太简单，所以它的效率很低（原因是他要不断的计算action value然后取期望）。</p>
+</li>
+<li><p>MC Basic的缺陷：首先我们先定义一个visit：state-action pair，也叫做状态—行动对。对于MC Basic而言对于一个episode而言：MC Basi使用处理数据的</p>
+<p>方法叫做：Initial-visit method，在这个 episode中我们只会去估计q<sub>Π</sub>(S1,S2),对于数据是一种浪费。</p>
+<p><img src="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240802155601658.png" alt="image-20240802155601658"></p>
+</li>
+<li><p>浪费的原因：</p>
+<p><img src="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240802160026036.png" alt="image-20240802160026036"></p>
+<ul>
+<li>数据计算高效的方法：<ul>
+<li>1.first-visit method：相当于有效样本仅仅是开始访问的（s，a），对于后面出现的（s，a）都不算在内。</li>
+<li>2.every-visit method：相当于在当前样本中涉及的所有以任意（s，a）为起始的discounted return都可以当做有效样本利用。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>如何更加高效的更新策略：</p>
+<ul>
+<li>原来的MC Basic是是在等<strong>所有episode得到后计算return算出q值</strong>，才进行更新的，这样有个缺点，就是需要等所有的episode都得到才能更新，有一个等待的过程。</li>
+<li>MC Exploring Starts就不需要等待，当一个episode得到后就计算q值，开始更新。这样的话效率就会提升。<ul>
+<li><strong>有人可能会说，一个episode的返回不能准确地接近相应的动作值q，事实上，我们已经在截断策略迭代算法中这样做了。</strong>并没有什么问题</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>MC exploring starts的需要理由：</p>
+<ul>
+<li>区别于MC Basic：<strong>然后exploring里面每个(s,a)只需要进行一次实验得到一个episode，不需要多个episode求平均值</strong></li>
+<li><strong>应该还有 MC exploring visit，但是不能保证能够经过所有的<u>（S，a）</u>。</strong>因此算法还可以改进在下一节课。</li>
+</ul>
+</li>
+</ul>
+<h4 id="——第五节课（p5）"><a href="#——第五节课（p5）" class="headerlink" title="——第五节课（p5）"></a>——第五节课（p5）</h4><h4 id="1-MC-ε-Greedy-算法"><a href="#1-MC-ε-Greedy-算法" class="headerlink" title="1.MC ε-Greedy 算法"></a>1.MC ε-Greedy 算法</h4><ul>
+<li>为了将Exploring Strats这个条件去掉：我们需要引入soft-policy（对每个action都有可能做选择） <ul>
+<li>这样我们就可以不像 Exploring Starts，将所有(s, a)无论概率如何都遍历一遍才能保证不会遗漏action。我们现在只需要从一个或者几个（s，a）出发就可以覆盖到其他所有的（s，a）。</li>
+</ul>
+</li>
+<li>那在这里我们就是用<strong>soft-policy</strong>里的<strong>ε-Greedy policy</strong>（就避免像greedy action那样某个action的概率是0% ）<img src="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240802204112509.png" alt="image-20240802204112509"></li>
+<li>选择greedy(最优action)的概率 始终比选择其他action的概率要大或者等于。</li>
+<li><strong>ε是一个可调参数</strong></li>
+<li>ε-greedy用来平衡exploitation（充分利用）和exploration（探索）<ul>
+<li>exploitation是指从当前s出发，以较大的概率选择action中action value最大的。</li>
+<li>exploration是指从当前s出发，虽然能以较大的概率选择得到最大的action value的action，但是有可能目前信息是不完全的，有可能其他aciton的action value要更好，应该要有概率去探索一下其他的action。</li>
+</ul>
+</li>
+</ul>
+<h4 id="2-如何将ε-greedy和蒙特卡洛结合"><a href="#2-如何将ε-greedy和蒙特卡洛结合" class="headerlink" title="2.如何将ε-greedy和蒙特卡洛结合"></a>2.如何将ε-greedy和蒙特卡洛结合</h4><ul>
+<li>之前MC Basic 和MC Exploring Stars的策略改进都是利用的greedy action <img src="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240802211049997.png" alt="image-20240802211049997"></li>
+<li>这里用的是every-visit，而不是first-visit。因为可能会有一个非常长的episode ，如果只用first-visit,许多state-action pair实际上被访问很多次，就会有些浪费。</li>
+</ul>
+<h3 id="——第五节课（p6）"><a href="#——第五节课（p6）" class="headerlink" title="——第五节课（p6）"></a>——第五节课（p6）</h3><h4 id="1-MC-ε-Greedy-算法的特点"><a href="#1-MC-ε-Greedy-算法的特点" class="headerlink" title="1.MC ε-Greedy 算法的特点"></a>1.MC ε-Greedy 算法的特点</h4><ul>
+<li>当越小时，探索更弱，充分利用更强。如果ε &#x3D; 0. 那么会始终选择greedy (最优action)。</li>
+<li>当越大时，探索更强，充分利用更弱。如果ε &#x3D; 1. 那么选择所有action的概率都相同 (均匀分布)</li>
+<li>MC ε-Greedy 算法的优缺点：<ul>
+<li><strong>优点</strong>：具有一定的探索性, 即使只有一个episode , 它也会尝试多数的action</li>
+<li><strong>缺点</strong>：牺牲了最优性, 得到的策略<strong>可能</strong>不是最优的, 这点与之前所有的算法都不同</li>
+<li>ε的值越小, 生成的策略可能接近最优策略, 所以在实际中可以在前期让ε较大获得探索性, 在后期让ε较小获得最优性。</li>
+</ul>
+</li>
+</ul>
+<h4 id="2-MC-basic，MC-exploring-starts与MC-ε-Greedy-的理解"><a href="#2-MC-basic，MC-exploring-starts与MC-ε-Greedy-的理解" class="headerlink" title="2.MC basic，MC exploring starts与MC ε-Greedy 的理解"></a>2.MC basic，MC exploring starts与MC ε-Greedy 的理解</h4><ul>
+<li><strong>MC basic</strong>:MC basic是用采样的方式得到的Q值，通常从固定的初始状态开始。每采样一次就能得到一个Q的估计，最后对所有的Q取平均，采样的越多对于当前Q就越接近，mc basic是对于每一个&lt;state,action&gt; pair都会进行一个估计。</li>
+<li><strong>MC exploring starts</strong>：引入了一个随机性，MC exploring starts，不是一种新方法，它对于策略引入了一个随机性，这个随机性得保证在你在起始点，采样足够长（一百万步一千万步），能把所有的pairs都采集到，这样对于每一次访问到就相当于对每一个访问进行一个MC采样。<u>至于用这个采样只用最长那个，还是说把所有采样进行一个平均，这就是first visit和every visit的区别。</u></li>
+<li><strong>MC ε-Greedy</strong>： 更像MC basic。MC ε-Greedy是一种思想了，它没有一种必须在什么时候用，或者必须用或者必须不用，就是你想增加探索的时候可以用它，它在epsilon 趋于零的时候，它的最优性以及和最优策略的一致性是能得到保证的。</li>
+</ul>
+<h3 id="——第六节课（p1）"><a href="#——第六节课（p1）" class="headerlink" title="——第六节课（p1）"></a>——第六节课（p1）</h3><h4 id="1-mean-estimaton"><a href="#1-mean-estimaton" class="headerlink" title="1.mean estimaton"></a>1.mean estimaton</h4><p>​	通过大量的数据采样，并且通过计算平均值，来计算期望值。</p>
+<p><img src="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240805153606163.png" alt="image-20240805153606163"></p>
+<h4 id="2-如何计算期望"><a href="#2-如何计算期望" class="headerlink" title="2.如何计算期望"></a>2.如何计算期望</h4><ul>
+<li><p><strong>方法一：</strong>相加除以N。</p>
+<ul>
+<li>缺点：对于采样的数据我们需要去等很久。</li>
+</ul>
+</li>
+<li><p><strong>方法二：</strong>通过迭代的方式。</p>
+<p><img src="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240805153927936.png" alt="image-20240805153927936"></p>
+</li>
+</ul>
+<p>​                  	那么W<sub>K+1</sub>的值便是：<img src="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240805154020741.png" alt="image-20240805154020741"></p>
+<p>​		              然后通过迭代得到：<img src="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240805184119814.png" alt="image-20240805184119814"></p>
+<h3 id="——第六节课（p2）"><a href="#——第六节课（p2）" class="headerlink" title="——第六节课（p2）"></a>——第六节课（p2）</h3><h4 id="1-Stochastic-approximate（随即近似算法，简称：SA）"><a href="#1-Stochastic-approximate（随即近似算法，简称：SA）" class="headerlink" title="1.Stochastic approximate（随即近似算法，简称：SA）"></a>1.Stochastic approximate（随即近似算法，简称：SA）</h4><p>​	SA表示一大类算法，这些算法是要进行方程的求解或者是优化问题</p>
+<h4 id="2-Robbins-Monro-RM-算法"><a href="#2-Robbins-Monro-RM-算法" class="headerlink" title="2.Robbins-Monro (RM) 算法:"></a>2.<strong>Robbins-Monro (RM) 算法:</strong></h4><p>RM算法的精髓：通过不断的输入w，来判断g（w）是否等于0，若g（w）不等于0，则通过式子调整下一个输入的w，精髓就在下一次输入的w与上一次输入的w差值有多少，也就是所减去的<img src="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240821165316711.png" alt="image-20240821165316711">。</p>
+<ul>
+<li><p>著名的随机梯度下降算法（stochastic gradient descent algorithm）是 RM 算法的一种特殊形式。</p>
+</li>
+<li><p>它可以用来分析开头介绍的均值估计（mean estimation）算法。我们前面介绍的 mean estimation 算法也是一种特殊的 RM 算法。</p>
+</li>
+<li><p>在求解”函数 g 的表达式未知“的式子中，我们想得到<strong>g(w)&#x3D;0</strong>的最优解，我们利用的就是RM算法。</p>
+<ul>
+<li><p><img src="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240821161808433.png" alt="image-20240821161808433"></p>
+</li>
+<li><p>RM算法是个迭代式的算法，对 w* 第 k 次的估计是 wk，第 k+1 次的估计是 wk+1。</p>
+<p><img src="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240821161745086.png" alt="image-20240821161745086"></p>
+</li>
+</ul>
+</li>
+</ul>
+<p>​		</p>
+<h3 id="——第六节课（p3）"><a href="#——第六节课（p3）" class="headerlink" title="——第六节课（p3）"></a>——第六节课（p3）</h3><h4 id="1-RM-算法为什么能够收敛？"><a href="#1-RM-算法为什么能够收敛？" class="headerlink" title="1.RM 算法为什么能够收敛？"></a>1.RM 算法为什么能够收敛？</h4><p>三个条件保证收敛：</p>
+<ul>
+<li>对g（w）的梯度的要求  <ul>
+<li>这条曲线必须是递增的，递减的不行。</li>
+<li>梯度也要小于某一个值。</li>
+</ul>
+</li>
+<li>对系数a<sub>k</sub>的要求（a<sub>k</sub>&#x3D;k分之一最佳：满足下面的条件）<ul>
+<li>确保k趋近于无穷时，a<sub>k</sub>收敛到0。</li>
+<li>确保a<sub>k</sub>不要收敛的太快。</li>
+</ul>
+</li>
+<li><img src="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20240912110457828.png" alt="image-20240912110457828"><ul>
+<li>η的期望是0，并且η的<strong>方差</strong>是有界的。</li>
+<li>并且观测误差η<sub>k</sub>并不是个高斯噪音。</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mean estimation 算法其实是特殊的RM的算法</span><br></pre></td></tr></table></figure>
+
+<h3 id="——第六节课（p4）"><a href="#——第六节课（p4）" class="headerlink" title="——第六节课（p4）"></a>——第六节课（p4）</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SGD是RM算法的特殊情况，mean estimation算法也是SGD的特殊情况</span><br></pre></td></tr></table></figure>
+
+<h4 id="1-SGD算法解决的问题"><a href="#1-SGD算法解决的问题" class="headerlink" title="1.SGD算法解决的问题"></a>1.SGD算法解决的问题</h4><p>假设我们的目标是解决以下优化问题：</p>
+<p>​                                                                     	<img src="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20241005102825893.png" alt="image-20241005102825893"></p>
+<ul>
+<li>目标函数 J，是 w 的函数，目标是要找到最优的 w，要优化 w 使得目标函数达到<strong>最小</strong>。</li>
+<li>标函数是 f 的期望，f 是 w 和随机变量 X 的函数。随机变量 X 的概率分布（probability distribution）已经给定，但我们还不知道。期望是对 X 求期望。</li>
+</ul>
+<h4 id="2-解决该问题的方法"><a href="#2-解决该问题的方法" class="headerlink" title="2.解决该问题的方法"></a>2.解决该问题的方法</h4><p>方法1：<strong>梯度下降（gradient descent，GD）</strong></p>
+<p>因为我们的目标是最小化一个目标函数，所以要用梯度下降；如果目标是最大化一个目标函数，就要用梯度上升。</p>
+<p><img src="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20241005103214111.png" alt="image-20241005103214111"></p>
+<p>缺点：难以获得期望值（expected value）。对此有两种解决方法：第一种方法，如果有模型就可以求出来；第二种方法，如果没有模型，用数据求。</p>
+<p>方法二：<strong>批量梯度下降（batch gradient descent，BGD）</strong></p>
+<p>​	对随机变量f（w<sub>k</sub>,x)进行采样，然后进行求平均值也认为期望。</p>
+<p><img src="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20241005103533830.png" alt="image-20241005103533830"></p>
+<p>缺点：每次迭代都需要对每个 wk 进行多次采样。在每次更新 wk 的时候都要采样 n 次或者多次。这在实际中还是不实用。</p>
+<p>方法三：<strong>随机梯度下降（stochastic gradient descent，SGD）</strong></p>
+<p><img src="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20241005103706760.png" alt="image-20241005103706760"></p>
+<p>在 batch gradient descent （ BGD）中，要采样很多次，如果采样越多，对期望估计的就越准，但是问题是也需要很多数据；在 stochastic gradient descent （SGD）中，只用了一个数据</p>
+<h3 id="——第六节课（p5）"><a href="#——第六节课（p5）" class="headerlink" title="——第六节课（p5）"></a>——第六节课（p5）</h3><h4 id="1-举例说明SGD"><a href="#1-举例说明SGD" class="headerlink" title="1.举例说明SGD"></a>1.举例说明SGD</h4><p><img src="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20241005154944756.png" alt="image-20241005154944756"></p>
+<p>问题1：<strong>证明最优解为 w* &#x3D; E[X].</strong></p>
+<p><img src="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20241005155918960.png" alt="image-20241005155918960"></p>
+<p>问题2：<strong>写出解决这个问题的 GD 算法。</strong></p>
+<p><img src="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20241005160014555.png" alt="image-20241005160014555"></p>
+<p>问题3：<strong>写出解决这个问题的 SGD 算法。</strong></p>
+<p>  先知道 gradient descent，GD 算法，知道里面要有期望，<strong>把期望去掉</strong>就直接得到 SGD</p>
+<p><img src="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20241005160100252.png" alt="image-20241005160100252"></p>
+<h4 id="2-为什么-SGD-能够是有效的？"><a href="#2-为什么-SGD-能够是有效的？" class="headerlink" title="2.为什么 SGD 能够是有效的？"></a>2.为什么 SGD 能够是有效的？</h4><p>​	SGD 的基本思路就是从 GD 出发， GD 中的<strong>期望 E</strong> 是不知道的；因此我们干脆把它去掉，用一个<strong>采样</strong>来近似这个 E。这个就是 SGD。</p>
+<p><img src="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20241005161632677.png" alt="image-20241005161632677"></p>
+<p>用 stochastic gradient 去近似 true gradient，那么它们之间肯定是存在一个误差的，他俩之间的关系式如下：</p>
+<p><img src="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20241005161655914.png" alt="image-20241005161655914"></p>
+<p>​		   <em><em><u>stochastic gradient 肯定不是准确的，在这种情况下，用 SGD 是否能找到最优解 w</em> 呢？</u></em>*</p>
+<p>解释：基本思想是证明 SGD 是一个特殊的 RM 算法，<strong>RM 算法在满足一定条件下是可以收敛的</strong>，我们就知道 SGD 在满足什么条件下也是能够收敛的。</p>
+<p>如何证明SGD是一个特殊的RM算法：</p>
+<ul>
+<li><p>SGD 要解决的问题是去最小化下面这样一个目标函数（objective function）</p>
+<p><img src="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20241005164136364.png" alt="image-20241005164136364"></p>
+</li>
+<li><p>这个优化问题可以转化为一个寻根问题（a root-finding problem），就是求解一个方程的问题，因为上面的目标函数要达到最优的话，必要条件是<strong>它的梯度（gradient）等于 0：</strong>（区别于RM算法）</p>
+</li>
+</ul>
+<p><img src="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20241005164318206.png" alt="image-20241005164318206"></p>
+<ul>
+<li>如果让 g(w) 等于梯度（gradient），那么求解上上个图片的最优问题就变成了求解一个方程 g(w)&#x3D;0 的问题。</li>
+</ul>
+<p><img src="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20241005164428362.png" alt="image-20241005164428362"></p>
+<p><strong>那么 g(w)&#x3D;0 可以用一个 RM 算法来求解</strong>。</p>
+<p>为了求解 RM 算法需要用到数据，也就是 g(w) 算法的表达式我们不知道，但是<strong>我们有一些测量</strong>。g~ 是 stochastic gradient：</p>
+<p><img src="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20241005164720680.png" alt="image-20241005164720680"></p>
+<p>所以，求解 g(w)&#x3D;0 的 RM 算法是：</p>
+<p><img src="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20241005164808120.png" alt="image-20241005164808120"></p>
+<p>所以这个 RM 算法就是一个 SGD 算法，反过来说，SGD 算法是求解这样一个特殊问题的 RM 算法，相应的收敛性也可以用 RM 算法的收敛性结论来分析。</p>
+<h3 id="——第六节课（p6）"><a href="#——第六节课（p6）" class="headerlink" title="——第六节课（p6）"></a>——第六节课（p6）</h3><h4 id="1-随机梯度和批量梯度之间的相对误差（relative-error）"><a href="#1-随机梯度和批量梯度之间的相对误差（relative-error）" class="headerlink" title="1.随机梯度和批量梯度之间的相对误差（relative error）"></a>1.随机梯度和批量梯度之间的相对误差（relative error）</h4><p><img src="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20241005200630237.png" alt="image-20241005200630237"></p>
+<p><img src="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20241005202127699.png" alt="image-20241005202127699"></p>
+<p>并且我们在最后的式子中注意到：</p>
+<p><img src="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20241005202220565.png" alt="image-20241005202220565"></p>
+<p>上式表明，SGD 的收敛模式非常有趣：</p>
+<ul>
+<li>当 w<sub>k</sub> 距离 w* **<u>比较远的时候</u><strong>，分母比较大，若分子是有限的，</strong><u>那么相对误差（relative error）比较小</u><em><em>，也就是 stochastic gradient 和 true gradient 比较接近，这时候SGD 和 GD 很类似，也就是它会大概朝这个方向接近目标；相反，如果 wk-w</em> 比较小的时候，整个上界比较大，w<sub>k</sub> 在 w</em> 的附近，这时候存在随机性</li>
+<li>当 |w<sub>k</sub> - w∗| 较大时——<strong>即两者距离较小时</strong>，δk 较小，SGD 的表现与普通的梯度下降（GD）相似</li>
+<li>当 <sub>k</sub> 接近 w∗ 时，相对误差可能很大，收敛在 w∗ 附近表现出更大的随机性。</li>
+</ul>
+<h4 id="2-举例说明SGD的收敛模式"><a href="#2-举例说明SGD的收敛模式" class="headerlink" title="2.举例说明SGD的收敛模式"></a>2.举例说明SGD的收敛模式</h4><ul>
+<li>设置 X∈R*2 表示平面上的一个随机位置。其在以原点为中心、边长为 20 的正方形区域内分布均匀。真实均值为 E[X] &#x3D;[0,0]T（转置）。均值估计基于 100 个独立同分布的（iid）样本 {xi}，i的取值范围1-100。</li>
+<li>在以原点为中心、边长为 20 的正方形区域内均匀随机采样 100 组，采集 100 组点。用这 100 组点跑刚才的 mean estimation 的算法，也就是 w<sub>k+1</sub>&#x3D;w<sub>k</sub>-α<sub>k</sub>(w<sub>k</sub>-x<sub>k</sub>)，观察整个算法在收敛过程中呈现什么样的行为</li>
+</ul>
+<p>结果如下：</p>
+<p><img src="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20241005210245699.png" alt="image-20241005210245699"></p>
+<ul>
+<li>虽然初始猜测的平均值与真实值相距甚远，但 SGD 估计值<strong>可以快速接近真实值</strong>的邻域。</li>
+<li>当估计值接近真值时，<strong>它表现出一定的随机性</strong>，但仍会逐渐接近真值。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">离得越远反而不会表现出随机性，越靠近真值时，才会表现出一定的随机性。</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-SGD的一种确定性表述"><a href="#3-SGD的一种确定性表述" class="headerlink" title="3.SGD的一种确定性表述"></a>3.SGD的一种确定性表述</h4><p><strong>情景：</strong></p>
+<ul>
+<li>我们上面介绍的 SGD 公式（The formulation of SGD）涉及<strong>随机变量</strong>和<strong>期望值</strong>（random variables and expectation）。但是我们经常会遇到不涉及任何随机变量（random variables）的确定性 SGD 公式。</li>
+</ul>
+<p>我们需要考虑的优化问题：</p>
+<p><img src="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20241007162537278.png" alt="image-20241007162537278"></p>
+<p>我们求解这个问题的梯度下降的方法是：</p>
+<p><img src="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20241007162739098.png" alt="image-20241007162739098"></p>
+<p>但是假设集合 {xi} 很大，我们每次只能获取一个数字 xi。在这种情况下，我们可以使用下面的迭代算法：把上式求平均的 xi 用 xk 代替。</p>
+<p>这里就会产问题:</p>
+<p><strong>问题：</strong></p>
+<ul>
+<li>这个算法看起来与 SGD 非常类似，但这种算法是 SGD 吗？</li>
+<li>并且在这个集合里面每拿一个数出来作为X<sub>k</sub>,我们该怎么拿？</li>
+</ul>
+<p><strong>解决方法：</strong></p>
+<ul>
+<li>我们可以手动引入一个随机变量（introduce a random variable manually），将刚才一个不涉及随机变量的问题变成一个涉及随机变量的问题，将 SGD 的确定性公式（deterministic formulation）转换为随机公式（stochastic formulation）。</li>
+<li>所以，从集合 {xi} 中抽取 xk，<strong>应该随机抽取而不应该排序</strong>，而且因为是随机抽取，所以<strong>集合里面的这些数字会被反复用到。</strong></li>
+<li><img src="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20241007163244515.png" alt="image-20241007163244515"></li>
+</ul>
+<h3 id="——第六节课（p7）"><a href="#——第六节课（p7）" class="headerlink" title="——第六节课（p7）"></a>——第六节课（p7）</h3><h4 id="1-辨析BGD、MBGD、SGD"><a href="#1-辨析BGD、MBGD、SGD" class="headerlink" title="1.辨析BGD、MBGD、SGD"></a>1.辨析BGD、MBGD、SGD</h4><p>情景：有一个目标函数 J(w)，有 n 个采样 X<sub>i</sub>，我要用这样一组数据优化目标函数，有三种方法：BGD，MBGD 和 SGD</p>
+<p><img src="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20241007193734159.png" alt="image-20241007193734159"></p>
+<ul>
+<li><strong>BGD</strong> 每次都要用到 n 个所有的采样，在这个基础上求平均，这个可以说最接近于真实的期望（expectation）</li>
+<li><strong>MBGD</strong> 不用所有的采样，每次只用全部采样中的一部分，选取一组数使用（总集合的子集）</li>
+<li><strong>SGD</strong> 就是从集合 {X<sub>i</sub>} 中随机选择一个 采样出来。</li>
+</ul>
+<p><strong>比较 MBGD，BGD和 SGD（MBGD其实包括了BGD与SGD）</strong></p>
+<ul>
+<li>与 SGD 相比，MBGD 的随机性更小，因为它使用了更多的样本，而不是像 SGD 那样只使用一个样本。用更多的数据去平均的话，会把噪音等等测量给平均掉。</li>
+<li>与 BGD 相比，MBGD 的数据较少，它的随机性会更大一些，因为它无需在每次迭代中使用所有样本，因此更加灵活高效。</li>
+<li>如果 MBGD 的 mini-batch m &#x3D; 1，则 MBGD 变为 SGD。如果 MBGD 的 mini-batch m &#x3D; n，严格来说，MBGD 不会变成 BGD，<strong>因为 MBGD 使用随机获取的 n 个样本</strong>，抽取的过程中可能一个采样抽取了好几次没有抽到，而 BGD 使用所有 n 个数字。</li>
+</ul>
+<h4 id="2-举例说明-1"><a href="#2-举例说明-1" class="headerlink" title="2.举例说明"></a>2.举例说明</h4><p>有 n 个数字，我们的目标是求平均值，求平均值的问题可以等价为一个优化问题：</p>
+<p><img src="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20241007204638567.png" alt="image-20241007204638567"></p>
+<h4 id="3-第六节课总结"><a href="#3-第六节课总结" class="headerlink" title="3.第六节课总结"></a>3.第六节课总结</h4><ul>
+<li>介绍了 mean estimation 算法，用一组数来求期望（expectation），之前我们只是简单的把这一组数求平均，就可以近似估计它的期望；这节课讲了一个迭代的算法，当我得到一个采样，就计算一次，这样就不用等所有的采样全部拿到了再计算，会更加高效。</li>
+<li>介绍了非常经典的 SA 领域的 RM 算法，要求的是方程 g(w)&#x3D;0 的最优解 w<em>，但是不知道 g(w) 的表达式，只知道给一个 w 能测出来输出，而且这个输出的有噪音或者有误差的，输出用 g~ 表示，所以 RM 算法是怎么样用含有噪音的测量来估计 w</em></li>
+<li>介绍了 SGD 算法，知道目标函数 J(w)，还知道它的一个梯度的采样，就可以用 stochastic gradient 这个算法让最后的 Wk 趋于最优值W*</li>
+</ul>
+<p><img src="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20241007205121874.png" alt="image-20241007205121874"></p>
+<h3 id="——第七节课（p1）"><a href="#——第七节课（p1）" class="headerlink" title="——第七节课（p1）"></a>——第七节课（p1）</h3><h4 id="1-例子引出"><a href="#1-例子引出" class="headerlink" title="1.例子引出"></a>1.例子引出</h4><p>​	第六次课，我们考虑简单的均值估计问题（mean estimation problem）：（之前的课程都在反复讲这个问题，我们会从不同角度介绍这个问题）：mean estimation 问就是要求解一个 random variable X 的 expectation，用 w 来表示这样一个 expectation 的值，现在有的是 X 的独立同分布采样，用这些采样求 expectation。这个问题有很多算法可以求解，这里讲解 RM 算法<br><img src="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20241021201410489.png" alt="image-20241021201410489"></p>
+<p>后面我们将看到 TD 算法也有类似的表达式。与RM算法类似</p>
+<h3 id="——第七节课（p2）"><a href="#——第七节课（p2）" class="headerlink" title="——第七节课（p2）"></a>——第七节课（p2）</h3><h4 id="1-TD-算法（估计state-value）"><a href="#1-TD-算法（估计state-value）" class="headerlink" title="1.TD 算法（估计state value）"></a>1.TD 算法（估计state value）</h4><ul>
+<li><p><strong>TD 算法是基于数据，不基于模型实现强化学习的，算法使用的数据&#x2F;经验（data&#x2F;experience）如下：*<em>这些数据全都是由一个给定的策略 π 所产生的，下面的 TD 算法就是要用这些数据估计 π 所对应的 state value*</em></strong></p>
+<p><img src="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20241021205232188.png" alt="image-20241021205232188"></p>
+</li>
+<li><p>下面 TD 算法就是要用这些数据来估计 π 对应的 state value，<strong>下面正式的给出 TD 算法，包含两个式子：</strong></p>
+</li>
+</ul>
+<p><img src="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20241021205404138.png" alt="image-20241021205404138"></p>
+<p>对于上述的式子有一点非常重要！！！</p>
+<ul>
+<li><strong>在时间t，只有访问状态st的值被更新，而未访问状态S≠St的值保持不变。</strong></li>
+</ul>
+<p>下面详细介绍第一个式子：</p>
+<p><img src="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20241021210142657.png" alt="image-20241021210142657"></p>
+<p>下面详细介绍上面式子中的两项：</p>
+<ul>
+<li>如何理解TD target</li>
+</ul>
+<p><img src="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20241021211458012.png" alt="image-20241021211458012"></p>
+<ul>
+<li><p>如何理解TD error</p>
+<p><img src="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0.assets/image-20241021213016099.png" alt="image-20241021213016099"></p>
+</li>
+</ul>
 
       
     </div>
