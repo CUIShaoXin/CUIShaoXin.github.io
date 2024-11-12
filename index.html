@@ -147,6 +147,100 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/11/12/Pytorch%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%AE%9E%E8%B7%B5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="ShaoXin Cui">
+      <meta itemprop="description" content="有志者事竟成">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CuiShao Xin's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2024/11/12/Pytorch%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%AE%9E%E8%B7%B5/" class="post-title-link" itemprop="url">未命名</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2024-11-12 16:54:44 / 修改时间：16:54:02" itemprop="dateCreated datePublished" datetime="2024-11-12T16:54:44+08:00">2024-11-12</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="Pytorch深度学习实践"><a href="#Pytorch深度学习实践" class="headerlink" title="Pytorch深度学习实践"></a>Pytorch深度学习实践</h3><p>机器学习推荐：CS229|CS230</p>
+<p><u>TensorFlow：之前使用的是Static Graph</u></p>
+<p><u>PyTorch：使用的是Dynamic Graph</u></p>
+<h3 id="一、Linear-Model-（线性模型）"><a href="#一、Linear-Model-（线性模型）" class="headerlink" title="一、Linear Model （线性模型）"></a>一、Linear Model （线性模型）</h3><h4 id="1-一般模型训练过程"><a href="#1-一般模型训练过程" class="headerlink" title="1.一般模型训练过程"></a>1.一般模型训练过程</h4><ol>
+<li>准备数据集</li>
+<li>选择适合模型</li>
+<li>根据测试数据训练模型</li>
+<li>推理及运用</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">训练集</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>训练集一般分为两个部分</p>
+<ul>
+<li>测试集</li>
+<li>训练集</li>
+</ul>
+<p><img src="/Pytorch%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%AE%9E%E8%B7%B5.assets/image-20241105170757701.png" alt="image-20241105170757701"></p>
+</li>
+<li><p>机器学习主要的问题：<strong>”过拟合“</strong>模型在训练集上表现得较好，但是在测试集上表现较差，泛化能力差，即overfitiing。（过拟合的两个解决办法：早停和正则化）因此让模型<strong>泛化</strong>。</p>
+</li>
+<li><p><u>为了测验模型的泛化能力才让训练集分成两份</u>：普通训练集与开发集。</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">选择适合模型</span><br></pre></td></tr></table></figure>
+
+<p>在选择模型时<strong>优先选择线性模型</strong>（Linear model）</p>
+<p>举例说明：（所给定的数据集）</p>
+<p><img src="/Pytorch%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%AE%9E%E8%B7%B5.assets/image-20241112164347388.png" alt="image-20241112164347388"></p>
+<p>根据数据集所选用的线性模型：（<strong>y_hat为所预测的值</strong>）</p>
+<p><img src="/Pytorch%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%AE%9E%E8%B7%B5.assets/image-20241112164430418.png" alt="image-20241112164430418"></p>
+<p>对于所选择的线性模型我们需要去<strong>随机预测对应的w的值</strong>，然后得到相应的预测图线。</p>
+<p><img src="/Pytorch%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%AE%9E%E8%B7%B5.assets/image-20241112164815679.png" alt="image-20241112164815679"></p>
+<ul>
+<li>上图中红色箭头的间距与蓝色箭头的间距所差的值，就是预测值与真实值的差值</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2024/07/29/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1072,7 +1166,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-count">4</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
